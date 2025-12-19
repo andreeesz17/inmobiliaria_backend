@@ -8,6 +8,7 @@ import { MailModule } from './mail/mail.module';
 import { ImagesModule } from './images/images.module';
 import { RequestsModule } from './requests/requests.module';
 import { TransactionsModule } from './transactions/transactions.module';
+import { ContractsModule } from './contracts/contracts.module';
 
 @Module({
   imports: [
@@ -26,7 +27,8 @@ import { TransactionsModule } from './transactions/transactions.module';
     MailModule, 
     ImagesModule, 
     RequestsModule, 
-    TransactionsModule
+    TransactionsModule, 
+    ContractsModule
   ],
   controllers: [AppController],
   providers: [AppService],

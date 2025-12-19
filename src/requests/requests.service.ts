@@ -1,29 +1,27 @@
 import { Injectable, HttpStatus, HttpException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateRequestDto, TipoOperacion } from './dto/create-request.dto';
-import { Property } from './entities/property.entity';
+import { Property } from './schemas/property.schema';
 import { Visit } from './schemas/visit.schema';
 
 @Injectable()
 export class RequestsService {
   constructor(
-    @InjectRepository(Property)
-    private propertyRepository: Repository<Property>,
+    @InjectModel(Property.name)
+    private propertyModel: Model<Property>,
     @InjectModel(Visit.name)
     private visitModel: Model<Visit>,
   ) {}
 
   async create(createRequestDto: CreateRequestDto) {
     try {
-      const newProperty = this.propertyRepository.create({
+      const newProperty = new this.propertyModel({
         ...createRequestDto,
         createdAt: new Date(),
       });
 
-      const savedProperty = await this.propertyRepository.save(newProperty);
+      const savedProperty = await newProperty.save();
 
       return {
         statusCode: HttpStatus.CREATED,
@@ -44,7 +42,7 @@ export class RequestsService {
 
   async findAll() {
     try {
-      const properties = await this.propertyRepository.find();
+      const properties = await this.propertyModel.find();
       
       return {
         statusCode: HttpStatus.OK,
@@ -65,7 +63,7 @@ export class RequestsService {
 
   async findOne(id: string) {
     try {
-      const property = await this.propertyRepository.findOne({ where: { id } });
+      const property = await this.propertyModel.findById(id);
       
       if (!property) {
         throw new HttpException(

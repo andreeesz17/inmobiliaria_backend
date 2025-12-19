@@ -7,3 +7,8 @@ nest g controller transactions
 nest g service transactions
 
 giau kqix jrgs rvrk
+
+
+nest generate module contracts
+nest generate controller contracts
+nest generate service contracts
