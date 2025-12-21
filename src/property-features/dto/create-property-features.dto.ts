@@ -1,7 +1,16 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsString, IsOptional, IsBoolean, MaxLength } from 'class-validator';
 
 export class CreatePropertyFeaturesDto {
   @IsNotEmpty()
   @IsString()
-  name: string; 
+  @MaxLength(100)
+  name: string;
+
+  @IsOptional()
+  @IsString()
+  description: string;
+
+  @IsOptional()
+  @IsBoolean()
+  isActive: boolean;
 }

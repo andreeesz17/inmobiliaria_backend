@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { PropertyFeature } from './property-features.entity';
+import { PropertyFeature } from './property-feature.entity';
 import { CreatePropertyFeaturesDto } from './dto/create-property-features.dto';
 import { UpdatePropertyFeaturesDto } from './dto/update-property-features.dto';
 
