@@ -81,7 +81,8 @@ Servidor disponible en `http://localhost:3000`
 
 ## Project structure
 
-```src/
+```
+src/
 │── auth/
 │── users/
 │── agents/
@@ -104,7 +105,8 @@ Servidor disponible en `http://localhost:3000`
 
 ## Modules
 
-```🔐 Auth
+```
+🔐 Auth
 
 Login y registro de usuarios
 
@@ -171,7 +173,8 @@ Solicitudes de contacto
 
 ## Pagination
 
-```Se utiliza nestjs-typeorm-paginate en todos los endpoints de listado.
+```
+Se utiliza nestjs-typeorm-paginate en todos los endpoints de listado.
 
 Formato de respuesta estándar:
 {
@@ -190,7 +193,8 @@ Formato de respuesta estándar:
 
 ## Common
 
-```Carpeta de recursos compartidos del proyecto.
+```
+Carpeta de recursos compartidos del proyecto.
 
 DTOs
 
@@ -215,7 +219,8 @@ RolesGuard
 
 ## Authentication
 
-```Login:
+```
+Login:
 
 POST /auth/login
 
@@ -229,7 +234,8 @@ Authorization: Bearer <JWT_TOKEN>
 
 ## Notes
 
-```1. synchronize: true solo para desarrollo
+```
+1. synchronize: true solo para desarrollo
 
 2. No subir el archivo .env al repositorio
 
