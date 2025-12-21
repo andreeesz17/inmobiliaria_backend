@@ -4,7 +4,7 @@ import {
   Delete,
   Get,
   Param,
-  Patch,
+  Put,
   Post,
 } from '@nestjs/common';
 import { LocationsService } from './locations.service';
@@ -30,7 +30,7 @@ export class LocationsController {
     return this.locationsService.findOne(+id);
   }
 
-  @Patch(':id')
+  @Put(':id')
   update(
     @Param('id') id: string,
     @Body() dto: UpdateLocationsDto,
