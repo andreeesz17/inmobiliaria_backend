@@ -247,7 +247,7 @@ Authorization: Bearer <JWT_TOKEN>
 ## Authors
 
 ```
-Proyecto desarrollado por Andrés Zambrano, Danny Guaman y Alex Macias
+Proyecto desarrollado por `Andrés Zambrano`, `Danny Guaman` y `Alex Macias`
 Backend – NestJS | PostgreSQL | MongoDB
 ```
 
