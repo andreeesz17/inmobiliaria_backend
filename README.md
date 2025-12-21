@@ -37,7 +37,7 @@
 ## 📋 Guía de instalación y ejecución del backend
 
 ### Requisitos Previos
-- Node.js >= 16.x
+- Node.js >= 16.x --version
 - PostgreSQL
 - MongoDB
 - npm o yarn
@@ -602,17 +602,3 @@ La colección completa de Postman está disponible para descargar e importar dir
 <hr>
 
 <p align="center"><em>— Sistema de Gestión Inmobiliaria —</em></p>
-nest g module requests
-nest g controller requests
-nest g service requests
-
-nest g module transactions
-nest g controller transactions
-nest g service transactions
-
-giau kqix jrgs rvrk
-
-
-nest generate module contracts
-nest generate controller contracts
-nest generate service contracts
