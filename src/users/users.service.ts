@@ -56,7 +56,8 @@ export class UsersService {
   }
 
   async remove(id: number): Promise<boolean> {
-    const result = await this.userRepo.delete(id);
-    return result.affected > 0;
-  }
+  const result = await this.userRepo.delete(id);
+  return (result.affected ?? 0) > 0;
+}
+
 }

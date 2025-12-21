@@ -41,7 +41,8 @@ export class CategoriesService {
   }
 
   async remove(id: number): Promise<boolean> {
-    const result = await this.categoryRepo.delete(id);
-    return result.affected > 0;
-  }
+  const result = await this.categoryRepo.delete(id);
+  return (result.affected ?? 0) > 0;
+}
+
 }
