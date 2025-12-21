@@ -4,7 +4,7 @@ import {
   Delete,
   Get,
   Param,
-  Patch,
+  Put,
   Post,
 } from '@nestjs/common';
 import { AppointmentsService } from './appointments.service';
@@ -30,7 +30,7 @@ export class AppointmentsController {
     return this.appointmentsService.findOne(+id);
   }
 
-  @Patch(':id')
+  @Put(':id')
   update(
     @Param('id') id: string,
     @Body() dto: UpdateAppointmentsDto,
