@@ -594,6 +594,8 @@ La colección completa de Postman está disponible para descargar e importar dir
 3. Selecciona el archivo de colección proporcionado
 4. Configura las variables de entorno según tus credenciales
 
+**Link de la colección:** `https://bold-water-9342402.postman.co/workspace/Andr%C3%A9s-Zambrano's-Workspace~bc8af3d5-d860-417a-8bc0-a9628a39ce27/collection/44963018-32ce9fa7-0b3e-4ff2-85ef-ad7e75fd1c19?action=share&source=copy-link&creator=44963082`
+
 ### Variables de Entorno en Postman
 - `baseUrl`: http://localhost:3000
 - `token`: (se establece automáticamente al iniciar sesión)
