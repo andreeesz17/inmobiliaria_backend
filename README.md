@@ -21,9 +21,8 @@
 
 <br>
 
-<p><strong>Trabajo:</strong> N-001</p>
-<p><strong>Fecha:</strong> 20/12/2025</p>
-<p><strong>Presentado por:</strong></p>
+<p><strong>Fecha:</strong> 21/12/2025</p>
+<p><strong>Equipo de trabajo:</strong></p>
 
 <ul>
 <li>Zambrano Colcha Carlos Andrés</li>
@@ -68,10 +67,10 @@ DB_HOST=localhost
 DB_PORT=5432
 DB_USER=postgres
 DB_PASS=your_password
-DB_NAME=inmo_db
+DB_NAME=db_inmobiliaria
 
 # MongoDB
-MONGO_URI=mongodb://localhost:27017/inmo_db
+MONGO_URI=mongodb://localhost:27017/db_inmo
 
 # JWT
 JWT_SECRET=your_jwt_secret
@@ -560,8 +559,8 @@ curl -X POST http://localhost:3000/auth/register \
 curl -X POST http://localhost:3000/auth/login \
   -H "Content-Type: application/json" \
   -d '{
-    "email": "juan@example.com",
-    "password": "contraseña123"
+    "email": "jorgeyunda@gmail.com",
+    "password": "contraseña"
   }'
 ```
 
