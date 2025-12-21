@@ -1,5 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { PropertyFeaturesController } from './property-features.controller';
+import { PropertyFeaturesService } from './property-features.service';
 
 describe('PropertyFeaturesController', () => {
   let controller: PropertyFeaturesController;
@@ -7,9 +8,17 @@ describe('PropertyFeaturesController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [PropertyFeaturesController],
+      providers: [
+        {
+          provide: PropertyFeaturesService,
+          useValue: {},
+        },
+      ],
     }).compile();
 
-    controller = module.get<PropertyFeaturesController>(PropertyFeaturesController);
+    controller = module.get<PropertyFeaturesController>(
+      PropertyFeaturesController,
+    );
   });
 
   it('should be defined', () => {
