@@ -13,7 +13,6 @@ export class TransactionsService {
 
   async create(createTransactionDto: CreateTransactionDto) {
     try {
-      // Verificar si la casa ya está vendida o alquilada
       const existingTransaction = await this.transactionRepository.findOne({
         where: {
           id_casa: createTransactionDto.id_casa,
