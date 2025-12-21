@@ -2,7 +2,7 @@ import { Injectable, HttpStatus, HttpException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateContractDto } from './dto/create-contract.dto';
-import { Contract } from './entities/contract.entity';
+import { Contract } from './contract.entity';
 import { MailService } from '../mail/mail.service';
 
 @Injectable()

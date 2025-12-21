@@ -2,7 +2,7 @@ import { Injectable, HttpStatus, HttpException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateTransactionDto, TipoTransaccion } from './dto/create-transaction.dto';
-import { Transaction } from './entities/transaction.entity';
+import { Transaction } from './transaction.entity';
 
 @Injectable()
 export class TransactionsService {

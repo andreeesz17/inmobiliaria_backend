@@ -3,7 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { MailService } from './mail.service';
 import { MailController } from './mail.controller';
 import { ConfigModule } from '@nestjs/config';
-import { MailLog } from './entities/mail-log.entity';
+import { MailLog } from './mail-log.entity';
 
 @Module({
   imports: [
