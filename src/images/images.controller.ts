@@ -1,14 +1,32 @@
-import { Controller, Get, Post, Body, Param, ParseIntPipe } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  ParseIntPipe,
+  UploadedFile,
+  UseInterceptors,
+  BadRequestException,
+} from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { ImagesService } from './images.service';
-import { UploadImageDto } from './dto/upload-image.dto';
 
 @Controller('images')
 export class ImagesController {
   constructor(private readonly imagesService: ImagesService) {}
 
   @Post('upload')
-  async uploadImage(@Body() uploadImageDto: UploadImageDto) {
-    return this.imagesService.uploadImage(uploadImageDto);
+  @UseInterceptors(FileInterceptor('image'))
+  async uploadImage(
+    @UploadedFile() file: Express.Multer.File,
+    @Body('id_casa', ParseIntPipe) id_casa: number,
+  ) {
+    if (!file) {
+      throw new BadRequestException('No se envió ninguna imagen');
+    }
+
+    return this.imagesService.uploadImage(file, id_casa);
   }
 
   @Get('casa/:id_casa')

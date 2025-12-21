@@ -1,21 +1,24 @@
 import { Injectable, HttpStatus, HttpException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { UploadImageDto } from './dto/upload-image.dto';
 import { Image } from './schemas/image.schema';
 
 @Injectable()
 export class ImagesService {
   constructor(
     @InjectModel(Image.name)
-    private imageModel: Model<Image>,
+    private readonly imageModel: Model<Image>,
   ) {}
 
-  async uploadImage(uploadImageDto: UploadImageDto) {
+  async uploadImage(file: Express.Multer.File, id_casa: number) {
     try {
       const newImage = new this.imageModel({
-        ...uploadImageDto,
-        upload_date: new Date(),
+        id_casa,
+        filename: file.filename,
+        mimetype: file.mimetype,
+        size: file.size,
+        path: file.path,
+        estado: 'active',
       });
 
       const savedImage = await newImage.save();
@@ -39,8 +42,7 @@ export class ImagesService {
 
   async findByCasaId(id_casa: number) {
     try {
-      const images = await this.imageModel.find({ id_casa: id_casa }).exec();
-      
+      const images = await this.imageModel.find({ id_casa }).exec();
       return {
         statusCode: HttpStatus.OK,
         message: 'Imágenes obtenidas exitosamente',
@@ -61,7 +63,6 @@ export class ImagesService {
   async findAll() {
     try {
       const images = await this.imageModel.find().exec();
-      
       return {
         statusCode: HttpStatus.OK,
         message: 'Todas las imágenes obtenidas exitosamente',
