@@ -4,7 +4,7 @@ import {
   Delete,
   Get,
   Param,
-  Patch,
+  Put,
   Post,
 } from '@nestjs/common';
 import { PropertiesService } from './properties.service';
@@ -30,7 +30,7 @@ export class PropertiesController {
     return this.propertiesService.findOne(+id);
   }
 
-  @Patch(':id')
+  @Put(':id')
   update(
     @Param('id') id: string,
     @Body() dto: UpdatePropertiesDto,

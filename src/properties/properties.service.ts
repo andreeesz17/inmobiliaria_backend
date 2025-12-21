@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Property } from './properties.entity';
+import { Property } from './property.entity';
 import { CreatePropertiesDto } from './dto/create-properties.dto';
 import { UpdatePropertiesDto } from './dto/update-properties.dto';
 
@@ -12,17 +12,20 @@ export class PropertiesService {
     private readonly propertiesRepo: Repository<Property>,
   ) {}
 
-  create(dto: CreatePropertiesDto) {
+  async create(dto: CreatePropertiesDto) {
     const property = this.propertiesRepo.create(dto);
-    return this.propertiesRepo.save(property);
+    return await this.propertiesRepo.save(property);
   }
 
   findAll() {
-    return this.propertiesRepo.find();
+    return this.propertiesRepo.find({ relations: ['features'] });
   }
 
   async findOne(id: number) {
-    const property = await this.propertiesRepo.findOne({ where: { id } });
+    const property = await this.propertiesRepo.findOne({ 
+      where: { id },
+      relations: ['features']
+    });
     if (!property) {
       throw new NotFoundException('Property not found');
     }
@@ -32,11 +35,11 @@ export class PropertiesService {
   async update(id: number, dto: UpdatePropertiesDto) {
     const property = await this.findOne(id);
     Object.assign(property, dto);
-    return this.propertiesRepo.save(property);
+    return await this.propertiesRepo.save(property);
   }
 
   async remove(id: number) {
     const property = await this.findOne(id);
-    return this.propertiesRepo.remove(property);
+    return await this.propertiesRepo.remove(property);
   }
 }
