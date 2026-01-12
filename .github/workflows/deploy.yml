@@ -14,8 +14,11 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # Carga nvm si lo usas
             cd ~/inmobiliaria_backend
             git pull origin main
             npm install
             npm run build
-            pm2 restart inmo-backend || pm2 start dist/main.js --name inmo-backend
+            # Usamos la ruta completa de pm2 para evitar errores
+            $(which pm2) restart inmo-backend || $(which pm2) start dist/main.js --name inmo-backend
