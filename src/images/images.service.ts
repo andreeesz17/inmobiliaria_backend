@@ -17,7 +17,7 @@ export class ImagesService {
         filename: file.filename,
         mimetype: file.mimetype,
         size: file.size,
-        path: file.path,
+        path: '/uploads/' + file.filename,
         estado: 'active',
       });
 
