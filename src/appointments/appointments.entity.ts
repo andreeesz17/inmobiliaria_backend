@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
+import { User } from '../users/user.entity';
+import { AppointmentStatus } from '../common/enums/appointment-status.enum';
 
 @Entity('appointments')
 export class Appointments {
@@ -16,4 +18,25 @@ export class Appointments {
 
   @Column()
   description: string;
+
+  @Column({
+    type: 'enum',
+    enum: AppointmentStatus,
+    default: AppointmentStatus.PENDING,
+  })
+  status: AppointmentStatus;
+
+  @Column({ nullable: true })
+  userId: number;
+
+  @ManyToOne(() => User)
+  @JoinColumn({ name: 'userId' })
+  user: User;
+
+  @Column({ nullable: true })
+  agentId: number;
+
+  @ManyToOne(() => User)
+  @JoinColumn({ name: 'agentId' })
+  agent: User;
 }
