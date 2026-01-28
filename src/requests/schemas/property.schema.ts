@@ -26,6 +26,19 @@ export class Property extends Document {
   
   @Prop({ default: Date.now })
   createdAt: Date;
+
+  @Prop()
+  updatedAt: Date;
+
+  @Prop({ 
+    type: String, 
+    enum: ['pending', 'approved', 'rejected'],
+    default: 'pending' 
+  })
+  status: string;
+
+  @Prop()
+  updatedBy: string;
 }
 
 export const PropertySchema = SchemaFactory.createForClass(Property);
